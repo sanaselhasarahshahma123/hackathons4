@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Detail - Eco-Friendly Store</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="app.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1>Eco-Friendly Store</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="products.html">Products</a>
+            <a href="cart.html">Cart</a>
+            <a href="profile.html">Profile</a>
+        </nav>
+    </header>
+
+    <!-- Product Detail Section -->
+    <section id="product-detail">
+        <img src="images/product-placeholder.jpg" alt="Product Image" id="product-image">
+        <div id="product-info">
+            <h2 id="product-name">Eco-Friendly T-Shirt</h2>
+            <p id="product-description">Made from 100% organic cotton with low environmental impact.</p>
+            <p>Eco-Score: <span id="product-eco-score">9</span></p>
+            <button onclick="addToCart()">Add to Cart</button>
+        </div>
+    </section>
+</body>
+</html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Detail - Eco-Friendly Store</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+            background: #f9f9f9;
+            color: #333;
+        }
+
+        header {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #2ecc71;
+        }
+
+        nav a {
+            margin-left: 1rem;
+            text-decoration: none;
+            color: #333;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #27ae60;
+        }
+
+        #product-detail {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin: 2rem;
+            max-width: 800px;
+        }
+
+        #product-image {
+            width: 100%;
+            max-height: 400px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+        }
+
+        #product-info {
+            margin-top: 1rem;
+        }
+
+        h2 {
+            margin: 1rem 0;
+            font-size: 2rem;
+            color: #27ae60;
+        }
+
+        p {
+            margin: 0.5rem 0;
+            font-size: 1.1rem;
+            color: #555;
+        }
+
+        button {
+            background: #2ecc71;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background 0.3s;
+            margin-top: 1rem;
+        }
+
+        button:hover {
+            background: #27ae60;
+        }
+
+        @media (max-width: 768px) {
+            #product-detail {
+                margin: 1rem;
+                padding: 1rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            button {
+                width: 100%;
+            }
+        }
+    </style>
+    <script src="app.js" defer></script>
+</head>
+<body>
+    
+
+    <!-- Product Detail Section -->
+    <section id="product-detail">
+        <img src="images/product-placeholder.jpg" alt="Product Image" id="product-image">
+        <div id="product-info">
+            <h2 id="product-name">Eco-Friendly T-Shirt</h2>
+            <p id="product-description">Made from 100% organic cotton with low environmental impact.</p>
+            <p>Eco-Score: <span id="product-eco-score">9</span></p>
+            <button onclick="addToCart()">Add to Cart</button>
+        </div>
+    </section>
+
+    <script>
+        function addToCart() {
+            alert('Product added to cart!');
+        }
+    </script>
+</body>
+</html>

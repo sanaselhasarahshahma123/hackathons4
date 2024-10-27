@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products - Eco-Friendly Store</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            line-height: 1.6;
+            color: #333;
+            background: #f9f9f9;
+        }
+
+        header, footer {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            padding: 1rem;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 2rem;
+            color: #2ecc71;
+        }
+
+        #product-list {
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .products-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            width: 250px;
+            text-align: center;
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .product-info {
+            padding: 1rem;
+        }
+
+        footer {
+            margin-top: auto;
+            text-align: center;
+            color: white;
+            background: #333;
+            padding: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Eco-Friendly Store</h1>
+    </header>
+
+    <section id="product-list">
+        <h2>Our Products</h2>
+        <div class="products-container">
+            <!-- Product items will be populated here by JavaScript -->
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2024 Eco-Friendly Store. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Product data
+        const products = [
+            {
+                id: 1,
+                name: "Recyclable Carrybag",
+                category: "home",
+                ecoScore: 9,
+                price: 24.99,
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvEuPdALLmC7_UpaZTjGx9WNF5jHmqXfdUmg&s"
+            },
+            {
+                id: 2,
+                name: "Outdoor Essentials",
+                category: "fashion",
+                ecoScore: 8,
+                price: 29.99,
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkIYFxgGsmaBatUClfCpMWFybyUzEKO7RAYQ&s"
+            },
+            {
+                id: 3,
+                name: "Bamboo Water Bottle",
+                category: "tech",
+                ecoScore: 7,
+                price: 49.99,
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyVfzorpkrQPTv8w_KwVGHeowFr4w6yMNAug&s"
+            }
+        ];
+
+        // Function to display products
+        function displayProducts() {
+            const productList = document.querySelector('.products-container');
+            productList.innerHTML = products.map(product => `
+                <div class="product-card">
+                    <img src="${product.image}" alt="${product.name}">
+                    <div class="product-info">
+                        <h3>${product.name}</h3>
+                        <p>Eco Score: ${product.ecoScore}/10</p>
+                        <p>$${product.price}</p>
+                        <button onclick="addToCart(${product.id})">Add to Cart</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function addToCart(productId) {
+            alert('Product added to cart!');
+        }
+
+        window.addEventListener('load', displayProducts);
+    </script>
+</body>
+</html>

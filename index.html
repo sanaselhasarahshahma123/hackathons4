@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eco-Friendly Store</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+        }
+
+        :root {
+            --primary-color: #2ecc71;
+            --secondary-color: #27ae60;
+            --text-color: #333;
+            --light-bg: #f9f9f9;
+            --shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        body {
+            line-height: 1.6;
+            color: var(--text-color);
+        }
+
+        header {
+            background: white;
+            padding: 1rem;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        header h1 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 2rem;
+        }
+
+        nav {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-color);
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        #hero {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+                        url('/api/placeholder/1920/600');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        #hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        #hero button {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        #hero button:hover {
+            background: var(--secondary-color);
+        }
+
+        #categories {
+            padding: 4rem 2rem;
+            background: var(--light-bg);
+        }
+
+        #categories h3 {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+        }
+
+        .categories-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .category-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .category-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .category-card h4 {
+            padding: 1rem;
+            text-align: center;
+        }
+
+        #tips {
+            padding: 4rem 2rem;
+        }
+
+        #tips h3 {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+        }
+
+        .tips-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .tip-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+
+        .tip-card h4 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .products-container {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 2rem;
+            padding: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        #filters {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            height: fit-content;
+        }
+
+        #filters h2 {
+            margin-bottom: 1rem;
+        }
+
+        #filters label {
+            display: block;
+            margin: 1rem 0 0.5rem;
+        }
+
+        #filters select {
+            width: 100%;
+            padding: 0.5rem;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        #product-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .product-info {
+            padding: 1rem;
+        }
+
+        footer {
+            background: var(--text-color);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        @media (max-width: 768px) {
+            .products-container {
+                grid-template-columns: 1fr;
+            }
+
+            #hero h2 {
+                font-size: 2rem;
+            }
+
+            .categories-container,
+            .tips-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        .notification-button {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+            transition: background 0.3s ease;
+        }
+
+        .notification-button:hover {
+            background: var(--secondary-color);
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; 
+            z-index: 1000; 
+            left: 0;
+            top: 0;
+            width: 100%; 
+            height: 100%; 
+            overflow: auto; 
+            background-color: rgba(0,0,0,0.4); 
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 15% auto; 
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%; 
+            max-width: 500px;
+            border-radius: 10px;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .notification-button {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+            transition: background 0.3s ease;
+        }
+
+        .notification-button:hover {
+            background: var(--secondary-color);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Eco-Friendly Store</h1>
+        <nav>
+            <a href="#" class="active">Home</a>
+            <a href="products.html">Products</a>
+            <a href="cart.html">Cart</a>
+            <a href="profile.html">Profile</a>
+        </nav>
+        <button class="notification-button" onclick="showTip()">i</button>
+    </header>
+
+    <section id="hero">
+        <h2>Shop Sustainable & Eco-Friendly Products</h2>
+        <p>Join the movement to make sustainable shopping easy and accessible.</p>
+        <button onclick="window.location.href='products.html'">Shop Now</button>
+    </section>
+
+    <section id="categories">
+        <h3>Explore Popular Categories</h3>
+        <div class="categories-container">
+            <div class="category-card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoKDHzTcjctLtoxgEfF_ddra4jwrJsqg5Nlw&s" alt="Fashion">
+                <h4>Eco-Friendly Utilities</h4>
+            </div>
+            <div class="category-card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSi7Jqf1GiLTMKaUeuPiGC0kOFMYDJYYomXw&s" alt="Home Goods">
+                <h4>Eco-Friendly Essentials</h4>
+            </div>
+            <div class="category-card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTU8T48dhlgEr7TBaCDXi11WvUvQ4QI7aGwhQ&s" alt="Tech Gadgets">
+                <h4>Home-made Containers</h4>
+            </div>
+        </div>
+    </section>
+
+    <section id="tips">
+        <h3>Eco-Friendly Living Tips</h3>
+        <p style="text-align: center; margin-bottom: 2rem;">Learn how to reduce your environmental impact with our weekly tips.</p>
+        <div class="tips-container">
+            <div class="tip-card">
+                <h4>Reduce Plastic Usage</h4>
+                <p>Switch to reusable bags, bottles, and containers to reduce plastic waste.</p>
+            </div>
+            <div class="tip-card">
+                <h4>Buy Recycled Products</h4>
+                <p>Look for products made from recycled materials to reduce resource use.</p>
+            </div>
+        </div>
+    </section>
+    <h2>Plant A Tree Program</h2>
+    <h3>Partner with organizations that plant trees for donations or contributions and track user's collective tree-planting impact.</h3>
+
+    <footer>
+        <p>© 2024 Eco-Friendly Store. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const products = [
+            {
+                id: 1,
+                name: "Bamboo Water Bottle",
+                category: "home",
+                ecoScore: 9,
+                price: 24.99,
+                image: "/api/placeholder/400/300"
+            },
+            {
+                id: 2,
+                name: "Organic Cotton T-Shirt",
+                category: "fashion",
+                ecoScore: 8,
+                price: 29.99,
+                image: "/api/placeholder/400/300"
+            },
+            {
+                id: 3,
+                name: "Solar Power Bank",
+                category: "tech",
+                ecoScore: 7,
+                price: 49.99,
+                image: "/api/placeholder/400/300"
+            }
+        ];
+
+        function filterProducts() {
+            const category = document.getElementById('category').value;
+            const ecoScore = parseInt(document.getElementById('eco-score').value);
+            const productList = document.getElementById('product-list');
+            
+            document.getElementById('eco-score-display').textContent = ecoScore;
+
+            const filteredProducts = products.filter(product => 
+                (category === 'all' || product.category === category) &&
+                product.ecoScore >= ecoScore
+            );
+
+            productList.innerHTML = filteredProducts.map(product => `
+                <div class="product-card">
+                    <img src="${product.image}" alt="${product.name}">
+                    <div class="product-info">
+                        <h3>${product.name}</h3>
+                        <p>Eco Score: ${product.ecoScore}/10</p>
+                        <p>$${product.price}</p>
+                        <button onclick="addToCart(${product.id})" 
+                                style="background: var(--primary-color); color: white; border: none; 
+                                       padding: 0.5rem 1rem; border-radius: 5px; cursor: pointer;">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function addToCart(productId) {
+            alert('Product added to cart!');
+        }
+
+        window.addEventListener('load', () => {
+            if (document.getElementById('product-list')) {
+                filterProducts();
+            }
+        });
+    </script>
+</body>
+</html>
